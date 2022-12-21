@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TheSurmanProject {
-    public partial class Form1 : Form {
-        public Form1() {
+namespace TheSurmanProject.Pages {
+    public partial class BrowseSurveys : UserControl {
+        public BrowseSurveys() {
             InitializeComponent();
         }
     }

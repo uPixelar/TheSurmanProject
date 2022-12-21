@@ -1,0 +1,530 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="surmanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tb_answers">
+          <Key>
+            <PropertyRef Name="answerId" />
+          </Key>
+          <Property Name="answerId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="questionId" Type="int" Nullable="false" />
+          <Property Name="text" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_groups">
+          <Key>
+            <PropertyRef Name="groupId" />
+          </Key>
+          <Property Name="groupId" Type="int" Nullable="false" />
+          <Property Name="groupName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_questions">
+          <Key>
+            <PropertyRef Name="questionId" />
+          </Key>
+          <Property Name="questionId" Type="int" Nullable="false" />
+          <Property Name="surveyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="text" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_surveys">
+          <Key>
+            <PropertyRef Name="surveyId" />
+          </Key>
+          <Property Name="surveyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ownerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_userAnswers">
+          <Key>
+            <PropertyRef Name="userAnswerId" />
+          </Key>
+          <Property Name="userAnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="answerId" Type="bigint" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_users">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="65" />
+          <Property Name="groupId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'surman.dbo.vw_useranswer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_useranswer">
+          <Key>
+            <PropertyRef Name="Question" />
+            <PropertyRef Name="Answer" />
+            <PropertyRef Name="questionId" />
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="Question" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Answer" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="questionId" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'surman.dbo.vw_userdetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_userdetails">
+          <Key>
+            <PropertyRef Name="userId" />
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="groupName" Type="varchar" MaxLength="50" />
+          <Property Name="Expr1" Type="int" />
+        </EntityType>
+        <Association Name="FK_tb_answers_tb_questions">
+          <End Role="tb_questions" Type="Self.tb_questions" Multiplicity="1" />
+          <End Role="tb_answers" Type="Self.tb_answers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_questions">
+              <PropertyRef Name="questionId" />
+            </Principal>
+            <Dependent Role="tb_answers">
+              <PropertyRef Name="questionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_questions_tb_surveys">
+          <End Role="tb_surveys" Type="Self.tb_surveys" Multiplicity="1" />
+          <End Role="tb_questions" Type="Self.tb_questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_surveys">
+              <PropertyRef Name="surveyId" />
+            </Principal>
+            <Dependent Role="tb_questions">
+              <PropertyRef Name="surveyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_surveys_tb_users">
+          <End Role="tb_users" Type="Self.tb_users" Multiplicity="1" />
+          <End Role="tb_surveys" Type="Self.tb_surveys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_users">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="tb_surveys">
+              <PropertyRef Name="ownerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_userAnswers_tb_answers">
+          <End Role="tb_answers" Type="Self.tb_answers" Multiplicity="1" />
+          <End Role="tb_userAnswers" Type="Self.tb_userAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_answers">
+              <PropertyRef Name="answerId" />
+            </Principal>
+            <Dependent Role="tb_userAnswers">
+              <PropertyRef Name="answerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_userAnswers_tb_users">
+          <End Role="tb_users" Type="Self.tb_users" Multiplicity="1" />
+          <End Role="tb_userAnswers" Type="Self.tb_userAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_users">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="tb_userAnswers">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_users_tb_groups">
+          <End Role="tb_groups" Type="Self.tb_groups" Multiplicity="1" />
+          <End Role="tb_users" Type="Self.tb_users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_groups">
+              <PropertyRef Name="groupId" />
+            </Principal>
+            <Dependent Role="tb_users">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="surmanModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_answers" EntityType="Self.tb_answers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_groups" EntityType="Self.tb_groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_questions" EntityType="Self.tb_questions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_surveys" EntityType="Self.tb_surveys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_userAnswers" EntityType="Self.tb_userAnswers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_users" EntityType="Self.tb_users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_useranswer" EntityType="Self.vw_useranswer" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_useranswer].[Question] AS [Question], 
+    [vw_useranswer].[Answer] AS [Answer], 
+    [vw_useranswer].[questionId] AS [questionId], 
+    [vw_useranswer].[username] AS [username]
+    FROM [dbo].[vw_useranswer] AS [vw_useranswer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_userdetails" EntityType="Self.vw_userdetails" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_userdetails].[userId] AS [userId], 
+    [vw_userdetails].[username] AS [username], 
+    [vw_userdetails].[groupName] AS [groupName], 
+    [vw_userdetails].[Expr1] AS [Expr1]
+    FROM [dbo].[vw_userdetails] AS [vw_userdetails]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tb_answers_tb_questions" Association="Self.FK_tb_answers_tb_questions">
+            <End Role="tb_questions" EntitySet="tb_questions" />
+            <End Role="tb_answers" EntitySet="tb_answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_questions_tb_surveys" Association="Self.FK_tb_questions_tb_surveys">
+            <End Role="tb_surveys" EntitySet="tb_surveys" />
+            <End Role="tb_questions" EntitySet="tb_questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_surveys_tb_users" Association="Self.FK_tb_surveys_tb_users">
+            <End Role="tb_users" EntitySet="tb_users" />
+            <End Role="tb_surveys" EntitySet="tb_surveys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_userAnswers_tb_answers" Association="Self.FK_tb_userAnswers_tb_answers">
+            <End Role="tb_answers" EntitySet="tb_answers" />
+            <End Role="tb_userAnswers" EntitySet="tb_userAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_userAnswers_tb_users" Association="Self.FK_tb_userAnswers_tb_users">
+            <End Role="tb_users" EntitySet="tb_users" />
+            <End Role="tb_userAnswers" EntitySet="tb_userAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_users_tb_groups" Association="Self.FK_tb_users_tb_groups">
+            <End Role="tb_groups" EntitySet="tb_groups" />
+            <End Role="tb_users" EntitySet="tb_users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="surmanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tb_answers">
+          <Key>
+            <PropertyRef Name="answerId" />
+          </Key>
+          <Property Name="answerId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="questionId" Type="Int32" Nullable="false" />
+          <Property Name="text" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tb_questions" Relationship="Self.FK_tb_answers_tb_questions" FromRole="tb_answers" ToRole="tb_questions" />
+          <NavigationProperty Name="tb_userAnswers" Relationship="Self.FK_tb_userAnswers_tb_answers" FromRole="tb_answers" ToRole="tb_userAnswers" />
+        </EntityType>
+        <EntityType Name="tb_groups">
+          <Key>
+            <PropertyRef Name="groupId" />
+          </Key>
+          <Property Name="groupId" Type="Int32" Nullable="false" />
+          <Property Name="groupName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tb_users" Relationship="Self.FK_tb_users_tb_groups" FromRole="tb_groups" ToRole="tb_users" />
+        </EntityType>
+        <EntityType Name="tb_questions">
+          <Key>
+            <PropertyRef Name="questionId" />
+          </Key>
+          <Property Name="questionId" Type="Int32" Nullable="false" />
+          <Property Name="surveyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tb_answers" Relationship="Self.FK_tb_answers_tb_questions" FromRole="tb_questions" ToRole="tb_answers" />
+          <NavigationProperty Name="tb_surveys" Relationship="Self.FK_tb_questions_tb_surveys" FromRole="tb_questions" ToRole="tb_surveys" />
+        </EntityType>
+        <EntityType Name="tb_surveys">
+          <Key>
+            <PropertyRef Name="surveyId" />
+          </Key>
+          <Property Name="surveyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ownerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_questions" Relationship="Self.FK_tb_questions_tb_surveys" FromRole="tb_surveys" ToRole="tb_questions" />
+          <NavigationProperty Name="tb_users" Relationship="Self.FK_tb_surveys_tb_users" FromRole="tb_surveys" ToRole="tb_users" />
+        </EntityType>
+        <EntityType Name="tb_userAnswers">
+          <Key>
+            <PropertyRef Name="userAnswerId" />
+          </Key>
+          <Property Name="userAnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="answerId" Type="Int64" Nullable="false" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_answers" Relationship="Self.FK_tb_userAnswers_tb_answers" FromRole="tb_userAnswers" ToRole="tb_answers" />
+          <NavigationProperty Name="tb_users" Relationship="Self.FK_tb_userAnswers_tb_users" FromRole="tb_userAnswers" ToRole="tb_users" />
+        </EntityType>
+        <EntityType Name="tb_users">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="groupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_groups" Relationship="Self.FK_tb_users_tb_groups" FromRole="tb_users" ToRole="tb_groups" />
+          <NavigationProperty Name="tb_surveys" Relationship="Self.FK_tb_surveys_tb_users" FromRole="tb_users" ToRole="tb_surveys" />
+          <NavigationProperty Name="tb_userAnswers" Relationship="Self.FK_tb_userAnswers_tb_users" FromRole="tb_users" ToRole="tb_userAnswers" />
+          <Property Name="password" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_useranswer">
+          <Key>
+            <PropertyRef Name="Question" />
+            <PropertyRef Name="Answer" />
+            <PropertyRef Name="questionId" />
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="Question" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Answer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="questionId" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_userdetails">
+          <Key>
+            <PropertyRef Name="userId" />
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="groupName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Expr1" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_tb_answers_tb_questions">
+          <End Role="tb_questions" Type="Self.tb_questions" Multiplicity="1" />
+          <End Role="tb_answers" Type="Self.tb_answers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_questions">
+              <PropertyRef Name="questionId" />
+            </Principal>
+            <Dependent Role="tb_answers">
+              <PropertyRef Name="questionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_userAnswers_tb_answers">
+          <End Role="tb_answers" Type="Self.tb_answers" Multiplicity="1" />
+          <End Role="tb_userAnswers" Type="Self.tb_userAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_answers">
+              <PropertyRef Name="answerId" />
+            </Principal>
+            <Dependent Role="tb_userAnswers">
+              <PropertyRef Name="answerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_users_tb_groups">
+          <End Role="tb_groups" Type="Self.tb_groups" Multiplicity="1" />
+          <End Role="tb_users" Type="Self.tb_users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_groups">
+              <PropertyRef Name="groupId" />
+            </Principal>
+            <Dependent Role="tb_users">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_questions_tb_surveys">
+          <End Role="tb_surveys" Type="Self.tb_surveys" Multiplicity="1" />
+          <End Role="tb_questions" Type="Self.tb_questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_surveys">
+              <PropertyRef Name="surveyId" />
+            </Principal>
+            <Dependent Role="tb_questions">
+              <PropertyRef Name="surveyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_surveys_tb_users">
+          <End Role="tb_users" Type="Self.tb_users" Multiplicity="1" />
+          <End Role="tb_surveys" Type="Self.tb_surveys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_users">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="tb_surveys">
+              <PropertyRef Name="ownerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_userAnswers_tb_users">
+          <End Role="tb_users" Type="Self.tb_users" Multiplicity="1" />
+          <End Role="tb_userAnswers" Type="Self.tb_userAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_users">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="tb_userAnswers">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="surmanEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tb_answers" EntityType="Self.tb_answers" />
+          <EntitySet Name="tb_groups" EntityType="Self.tb_groups" />
+          <EntitySet Name="tb_questions" EntityType="Self.tb_questions" />
+          <EntitySet Name="tb_surveys" EntityType="Self.tb_surveys" />
+          <EntitySet Name="tb_userAnswers" EntityType="Self.tb_userAnswers" />
+          <EntitySet Name="tb_users" EntityType="Self.tb_users" />
+          <EntitySet Name="vw_useranswer" EntityType="Self.vw_useranswer" />
+          <EntitySet Name="vw_userdetails" EntityType="Self.vw_userdetails" />
+          <AssociationSet Name="FK_tb_answers_tb_questions" Association="Self.FK_tb_answers_tb_questions">
+            <End Role="tb_questions" EntitySet="tb_questions" />
+            <End Role="tb_answers" EntitySet="tb_answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_userAnswers_tb_answers" Association="Self.FK_tb_userAnswers_tb_answers">
+            <End Role="tb_answers" EntitySet="tb_answers" />
+            <End Role="tb_userAnswers" EntitySet="tb_userAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_users_tb_groups" Association="Self.FK_tb_users_tb_groups">
+            <End Role="tb_groups" EntitySet="tb_groups" />
+            <End Role="tb_users" EntitySet="tb_users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_questions_tb_surveys" Association="Self.FK_tb_questions_tb_surveys">
+            <End Role="tb_surveys" EntitySet="tb_surveys" />
+            <End Role="tb_questions" EntitySet="tb_questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_surveys_tb_users" Association="Self.FK_tb_surveys_tb_users">
+            <End Role="tb_users" EntitySet="tb_users" />
+            <End Role="tb_surveys" EntitySet="tb_surveys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_userAnswers_tb_users" Association="Self.FK_tb_userAnswers_tb_users">
+            <End Role="tb_users" EntitySet="tb_users" />
+            <End Role="tb_userAnswers" EntitySet="tb_userAnswers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="surmanModelStoreContainer" CdmEntityContainer="surmanEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="surmanModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_answers">
+            <EntityTypeMapping TypeName="surmanModel.tb_answers">
+              <MappingFragment StoreEntitySet="tb_answers">
+                <ScalarProperty Name="answerId" ColumnName="answerId" />
+                <ScalarProperty Name="questionId" ColumnName="questionId" />
+                <ScalarProperty Name="text" ColumnName="text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_groups">
+            <EntityTypeMapping TypeName="surmanModel.tb_groups">
+              <MappingFragment StoreEntitySet="tb_groups">
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="groupName" ColumnName="groupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_questions">
+            <EntityTypeMapping TypeName="surmanModel.tb_questions">
+              <MappingFragment StoreEntitySet="tb_questions">
+                <ScalarProperty Name="questionId" ColumnName="questionId" />
+                <ScalarProperty Name="surveyId" ColumnName="surveyId" />
+                <ScalarProperty Name="text" ColumnName="text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_surveys">
+            <EntityTypeMapping TypeName="surmanModel.tb_surveys">
+              <MappingFragment StoreEntitySet="tb_surveys">
+                <ScalarProperty Name="surveyId" ColumnName="surveyId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="ownerId" ColumnName="ownerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_userAnswers">
+            <EntityTypeMapping TypeName="surmanModel.tb_userAnswers">
+              <MappingFragment StoreEntitySet="tb_userAnswers">
+                <ScalarProperty Name="userAnswerId" ColumnName="userAnswerId" />
+                <ScalarProperty Name="answerId" ColumnName="answerId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_users">
+            <EntityTypeMapping TypeName="surmanModel.tb_users">
+              <MappingFragment StoreEntitySet="tb_users">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_useranswer">
+            <EntityTypeMapping TypeName="surmanModel.vw_useranswer">
+              <MappingFragment StoreEntitySet="vw_useranswer">
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="questionId" ColumnName="questionId" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_userdetails">
+            <EntityTypeMapping TypeName="surmanModel.vw_userdetails">
+              <MappingFragment StoreEntitySet="vw_userdetails">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="groupName" ColumnName="groupName" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

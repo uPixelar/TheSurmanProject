@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ce8041534846491186c64319f7ccf3eb" Name="Diagram1">
+        <EntityTypeShape EntityType="surmanModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="surmanModel.tb_answers" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="surmanModel.tb_groups" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="surmanModel.tb_questions" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="surmanModel.tb_surveys" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="surmanModel.tb_userAnswers" Width="1.5" PointX="12" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="surmanModel.tb_users" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="surmanModel.vw_useranswer" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="surmanModel.vw_userdetails" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="surmanModel.FK_tb_answers_tb_questions" ManuallyRouted="false" />
+        <AssociationConnector Association="surmanModel.FK_tb_userAnswers_tb_answers" ManuallyRouted="false" />
+        <AssociationConnector Association="surmanModel.FK_tb_users_tb_groups" ManuallyRouted="false" />
+        <AssociationConnector Association="surmanModel.FK_tb_questions_tb_surveys" ManuallyRouted="false" />
+        <AssociationConnector Association="surmanModel.FK_tb_surveys_tb_users" ManuallyRouted="false" />
+        <AssociationConnector Association="surmanModel.FK_tb_userAnswers_tb_users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
