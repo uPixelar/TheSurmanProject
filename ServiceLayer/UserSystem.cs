@@ -70,11 +70,13 @@ namespace ServiceLayer {
         public static bool Login(string username, string password) {
             surmanEntities entities = new surmanEntities();
             tb_users result;
+#pragma warning disable CS0168 // Variable is declared but never used
             try { 
                 result = entities.tb_users.First(row => row.username == username && row.password == password);
             }catch(Exception e) {
                 return false;
             }
+#pragma warning restore CS0168 // Variable is declared but never used
             _Login(result);
             return true;
         }
