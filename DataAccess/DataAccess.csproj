@@ -87,6 +87,7 @@
     <Compile Include="tb_users.cs">
       <DependentUpon>SurmanModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <Compile Include="vw_useranswer.cs">
       <DependentUpon>SurmanModel.tt</DependentUpon>
     </Compile>

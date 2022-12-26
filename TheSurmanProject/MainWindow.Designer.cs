@@ -25,16 +25,16 @@
         private void InitializeComponent() {
             this.panelContent = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.flowMenuBottom = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.btnSettings = new System.Windows.Forms.Button();
-            this.btnProfile = new System.Windows.Forms.Button();
-            this.btnNotifications = new System.Windows.Forms.Button();
             this.flowMenuTop = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAdministration = new System.Windows.Forms.Button();
-            this.btnBrowseSurveys = new System.Windows.Forms.Button();
-            this.btnCreateSurvey = new System.Windows.Forms.Button();
             this.btnMySurveys = new System.Windows.Forms.Button();
+            this.btnCreateSurvey = new System.Windows.Forms.Button();
+            this.btnBrowseSurveys = new System.Windows.Forms.Button();
+            this.btnAdministration = new System.Windows.Forms.Button();
+            this.flowMenuBottom = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnNotifications = new System.Windows.Forms.Button();
+            this.btnProfile = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.panelView = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnMaximize = new System.Windows.Forms.Button();
@@ -42,8 +42,8 @@
             this.labelTitle = new System.Windows.Forms.Label();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
-            this.flowMenuBottom.SuspendLayout();
             this.flowMenuTop.SuspendLayout();
+            this.flowMenuBottom.SuspendLayout();
             this.panelView.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
             this.SuspendLayout();
@@ -69,83 +69,6 @@
             this.panelMenu.Size = new System.Drawing.Size(254, 610);
             this.panelMenu.TabIndex = 1;
             // 
-            // flowMenuBottom
-            // 
-            this.flowMenuBottom.AutoSize = true;
-            this.flowMenuBottom.Controls.Add(this.btnNotifications);
-            this.flowMenuBottom.Controls.Add(this.btnProfile);
-            this.flowMenuBottom.Controls.Add(this.btnSettings);
-            this.flowMenuBottom.Controls.Add(this.btnLogout);
-            this.flowMenuBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowMenuBottom.Location = new System.Drawing.Point(10, 378);
-            this.flowMenuBottom.Name = "flowMenuBottom";
-            this.flowMenuBottom.Size = new System.Drawing.Size(234, 212);
-            this.flowMenuBottom.TabIndex = 1;
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.btnLogout.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
-            this.btnLogout.Location = new System.Drawing.Point(0, 159);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(0);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(234, 53);
-            this.btnLogout.TabIndex = 7;
-            this.btnLogout.Text = "Log Out";
-            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.UseVisualStyleBackColor = false;
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.btnSettings.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
-            this.btnSettings.Location = new System.Drawing.Point(0, 106);
-            this.btnSettings.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(234, 53);
-            this.btnSettings.TabIndex = 6;
-            this.btnSettings.Text = "Settings";
-            this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettings.UseVisualStyleBackColor = false;
-            // 
-            // btnProfile
-            // 
-            this.btnProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.btnProfile.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProfile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
-            this.btnProfile.Location = new System.Drawing.Point(0, 53);
-            this.btnProfile.Margin = new System.Windows.Forms.Padding(0);
-            this.btnProfile.Name = "btnProfile";
-            this.btnProfile.Size = new System.Drawing.Size(234, 53);
-            this.btnProfile.TabIndex = 5;
-            this.btnProfile.Text = "undefined";
-            this.btnProfile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProfile.UseVisualStyleBackColor = false;
-            // 
-            // btnNotifications
-            // 
-            this.btnNotifications.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.btnNotifications.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnNotifications.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNotifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNotifications.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
-            this.btnNotifications.Location = new System.Drawing.Point(0, 0);
-            this.btnNotifications.Margin = new System.Windows.Forms.Padding(0);
-            this.btnNotifications.Name = "btnNotifications";
-            this.btnNotifications.Size = new System.Drawing.Size(234, 53);
-            this.btnNotifications.TabIndex = 4;
-            this.btnNotifications.Text = "Notifications";
-            this.btnNotifications.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNotifications.UseVisualStyleBackColor = false;
-            // 
             // flowMenuTop
             // 
             this.flowMenuTop.AutoSize = true;
@@ -159,21 +82,38 @@
             this.flowMenuTop.Size = new System.Drawing.Size(234, 212);
             this.flowMenuTop.TabIndex = 0;
             // 
-            // btnAdministration
+            // btnMySurveys
             // 
-            this.btnAdministration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.btnAdministration.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnAdministration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdministration.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdministration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
-            this.btnAdministration.Location = new System.Drawing.Point(0, 159);
-            this.btnAdministration.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAdministration.Name = "btnAdministration";
-            this.btnAdministration.Size = new System.Drawing.Size(234, 53);
-            this.btnAdministration.TabIndex = 6;
-            this.btnAdministration.Text = "Administration";
-            this.btnAdministration.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdministration.UseVisualStyleBackColor = false;
+            this.btnMySurveys.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.btnMySurveys.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnMySurveys.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMySurveys.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMySurveys.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.btnMySurveys.Location = new System.Drawing.Point(0, 0);
+            this.btnMySurveys.Margin = new System.Windows.Forms.Padding(0);
+            this.btnMySurveys.Name = "btnMySurveys";
+            this.btnMySurveys.Size = new System.Drawing.Size(234, 53);
+            this.btnMySurveys.TabIndex = 3;
+            this.btnMySurveys.Text = "My Surveys";
+            this.btnMySurveys.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMySurveys.UseVisualStyleBackColor = false;
+            this.btnMySurveys.Click += new System.EventHandler(this.btnMySurveys_Click);
+            // 
+            // btnCreateSurvey
+            // 
+            this.btnCreateSurvey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.btnCreateSurvey.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnCreateSurvey.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreateSurvey.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateSurvey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.btnCreateSurvey.Location = new System.Drawing.Point(0, 53);
+            this.btnCreateSurvey.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCreateSurvey.Name = "btnCreateSurvey";
+            this.btnCreateSurvey.Size = new System.Drawing.Size(234, 53);
+            this.btnCreateSurvey.TabIndex = 4;
+            this.btnCreateSurvey.Text = "Create a Survey";
+            this.btnCreateSurvey.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreateSurvey.UseVisualStyleBackColor = false;
             // 
             // btnBrowseSurveys
             // 
@@ -192,38 +132,99 @@
             this.btnBrowseSurveys.UseVisualStyleBackColor = false;
             this.btnBrowseSurveys.Click += new System.EventHandler(this.btnBrowseSurveys_Click);
             // 
-            // btnCreateSurvey
+            // btnAdministration
             // 
-            this.btnCreateSurvey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.btnCreateSurvey.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnCreateSurvey.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreateSurvey.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateSurvey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
-            this.btnCreateSurvey.Location = new System.Drawing.Point(0, 53);
-            this.btnCreateSurvey.Margin = new System.Windows.Forms.Padding(0);
-            this.btnCreateSurvey.Name = "btnCreateSurvey";
-            this.btnCreateSurvey.Size = new System.Drawing.Size(234, 53);
-            this.btnCreateSurvey.TabIndex = 4;
-            this.btnCreateSurvey.Text = "Create a Survey";
-            this.btnCreateSurvey.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreateSurvey.UseVisualStyleBackColor = false;
+            this.btnAdministration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.btnAdministration.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnAdministration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdministration.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdministration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.btnAdministration.Location = new System.Drawing.Point(0, 159);
+            this.btnAdministration.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAdministration.Name = "btnAdministration";
+            this.btnAdministration.Size = new System.Drawing.Size(234, 53);
+            this.btnAdministration.TabIndex = 6;
+            this.btnAdministration.Text = "Administration";
+            this.btnAdministration.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdministration.UseVisualStyleBackColor = false;
             // 
-            // btnMySurveys
+            // flowMenuBottom
             // 
-            this.btnMySurveys.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.btnMySurveys.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnMySurveys.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMySurveys.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMySurveys.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
-            this.btnMySurveys.Location = new System.Drawing.Point(0, 0);
-            this.btnMySurveys.Margin = new System.Windows.Forms.Padding(0);
-            this.btnMySurveys.Name = "btnMySurveys";
-            this.btnMySurveys.Size = new System.Drawing.Size(234, 53);
-            this.btnMySurveys.TabIndex = 3;
-            this.btnMySurveys.Text = "My Surveys";
-            this.btnMySurveys.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMySurveys.UseVisualStyleBackColor = false;
-            this.btnMySurveys.Click += new System.EventHandler(this.btnMySurveys_Click);
+            this.flowMenuBottom.AutoSize = true;
+            this.flowMenuBottom.Controls.Add(this.btnNotifications);
+            this.flowMenuBottom.Controls.Add(this.btnProfile);
+            this.flowMenuBottom.Controls.Add(this.btnSettings);
+            this.flowMenuBottom.Controls.Add(this.btnLogin);
+            this.flowMenuBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowMenuBottom.Location = new System.Drawing.Point(10, 378);
+            this.flowMenuBottom.Name = "flowMenuBottom";
+            this.flowMenuBottom.Size = new System.Drawing.Size(234, 212);
+            this.flowMenuBottom.TabIndex = 1;
+            // 
+            // btnNotifications
+            // 
+            this.btnNotifications.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.btnNotifications.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnNotifications.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNotifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNotifications.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.btnNotifications.Location = new System.Drawing.Point(0, 0);
+            this.btnNotifications.Margin = new System.Windows.Forms.Padding(0);
+            this.btnNotifications.Name = "btnNotifications";
+            this.btnNotifications.Size = new System.Drawing.Size(234, 53);
+            this.btnNotifications.TabIndex = 4;
+            this.btnNotifications.Text = "Notifications";
+            this.btnNotifications.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNotifications.UseVisualStyleBackColor = false;
+            // 
+            // btnProfile
+            // 
+            this.btnProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.btnProfile.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProfile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.btnProfile.Location = new System.Drawing.Point(0, 53);
+            this.btnProfile.Margin = new System.Windows.Forms.Padding(0);
+            this.btnProfile.Name = "btnProfile";
+            this.btnProfile.Size = new System.Drawing.Size(234, 53);
+            this.btnProfile.TabIndex = 5;
+            this.btnProfile.Text = "undefined";
+            this.btnProfile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProfile.UseVisualStyleBackColor = false;
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.btnSettings.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.btnSettings.Location = new System.Drawing.Point(0, 106);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(234, 53);
+            this.btnSettings.TabIndex = 6;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettings.UseVisualStyleBackColor = false;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.btnLogin.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.btnLogin.Location = new System.Drawing.Point(0, 159);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(0);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(234, 53);
+            this.btnLogin.TabIndex = 7;
+            this.btnLogin.Text = "Log Out";
+            this.btnLogin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // panelView
             // 
@@ -316,8 +317,8 @@
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
-            this.flowMenuBottom.ResumeLayout(false);
             this.flowMenuTop.ResumeLayout(false);
+            this.flowMenuBottom.ResumeLayout(false);
             this.panelView.ResumeLayout(false);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
@@ -338,7 +339,7 @@
         private System.Windows.Forms.Button btnNotifications;
         private System.Windows.Forms.Button btnProfile;
         private System.Windows.Forms.Button btnSettings;
-        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Panel panelView;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnMaximize;

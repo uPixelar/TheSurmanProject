@@ -60,6 +60,12 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainWindowMethods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindowOverride.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Pages\BrowseSurveys.cs">
       <SubType>UserControl</SubType>
     </Compile>

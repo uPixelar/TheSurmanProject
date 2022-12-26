@@ -8,52 +8,117 @@ using System.Threading.Tasks;
 using DataAccess;
 
 namespace ServiceLayer {
-    public class UserSystem {
-        protected static string username;
-        protected static string password;
+    /// <summary>
+    /// Class <c>UserSystem</c> holds current user data and manages user interactions.
+    /// </summary>
+    public static class UserSystem {
+        private static tb_users currentUser;
 
-        public string UserName { get { return username; } set { username = value; } }
-        public string Password { set { password = value; } }
+        /// <returns>Entity that represents current logged in user<br />null if not logged in</returns>
+        public static tb_users CurrentUser { get => currentUser; private set => currentUser = value; }
 
-        public bool Login(string username, string password) {
-            surmanEntities entities = new surmanEntities();
-            entities.tb_users.Where(row => row.username == username);
-            return false;
+        private static bool loggedIn = false;
+
+        /// <returns>Whether current user logged in or not</returns>
+        public static bool LoggedIn {
+            get => loggedIn;
         }
 
-        public void Register(string username, string password) {
+        /// <returns>Whether current user has admin privileges or not<br />false if not logged in</returns>
+        public static bool IsAdmin {
+            get => LoggedIn && CurrentUser.IsAdmin;
+        }
+
+        /// <summary>
+        /// This method loads user data from application settings.<br />
+        /// You can reach loaded user data from
+        /// <c>UserSystem.CurrentUser</c>
+        /// </summary>
+        public static void LoadUser() {
+            string username = Properties.UserSettings.Default.username;
+            string password = Properties.UserSettings.Default.password;
+            Debug.WriteLine(username+" "+password);
+            if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password)) return;
+
+            Login(username, password);
+        }
+
+        /// <summary>
+        /// This method saves user data to applications settings.<br />
+        /// Method takes user data from
+        /// <c>UserSystem.CurrentUser</c>
+        /// </summary>
+        private static void SaveUser() {
+            Properties.UserSettings us = Properties.UserSettings.Default;
+            if (LoggedIn) {
+                us.username = CurrentUser.username;
+                us.password = CurrentUser.password;
+            } else {
+                us.username = "";
+                us.password = "";
+            }
+            us.Save();
+        }
+
+        /// <summary>
+        /// This method tries to login to account with given parameters.<br />
+        /// Loads user data to <c>UserSystem.CurrentUser</c> if the process succeed.
+        /// </summary>
+        /// <returns>Result of the login process</returns>
+        /// <param name="username">Username to perform login process</param>
+        /// <param name="password">Password to perform login process</param>
+        public static bool Login(string username, string password) {
+            surmanEntities entities = new surmanEntities();
+            tb_users result;
+            try { 
+                result = entities.tb_users.First(row => row.username == username && row.password == password);
+            }catch(Exception e) {
+                return false;
+            }
+            _Login(result);
+            return true;
+        }
+
+        /// <summary>
+        /// This method tries to register user with given parameters.<br />
+        /// Loads user data to <c>UserSystem.CurrentUser</c> if the process succeed.
+        /// </summary>
+        /// <returns>Result of the register process</returns>
+        /// <param name="username">Username to perform the register process</param>
+        /// <param name="password">Password to perform the register process</param>
+        public static bool Register(string username, string password) {
             surmanEntities entities = new surmanEntities();
             tb_users user = new tb_users();
             user.groupId = entities.tb_groups.First(row => row.groupName == "User").groupId;
             user.username = username;
-            user.password = Hash(password);
+            user.password = password;
             user = entities.tb_users.Add(user);
-            Debug.WriteLine(user.password);
-            entities.SaveChanges();
-            username = user.username;
-            password = user.password;
-            
+#pragma warning disable CS0168 // Variable is declared but never used
+            try {
+                entities.SaveChanges();
+            }
+            catch (Exception e) {
+
+                return false;
+            }
+#pragma warning restore CS0168 // Variable is declared but never used
+            _Login(user);
+            return true;
         }
 
-        public string Hash(string password) {
-            // Create salt
-            byte[] salt;
-            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+        /// <summary>
+        /// This method logs out the user.
+        /// </summary>
+        public static void Logout() {
+            CurrentUser = null;
+            loggedIn = false;
+            SaveUser();
+        }
 
-            // Create hash
-            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
-            var hash = pbkdf2.GetBytes(20);
-
-            // Combine salt and hash
-            var hashBytes = new byte[16 + 20];
-            Array.Copy(salt, 0, hashBytes, 0, 16);
-            Array.Copy(hash, 0, hashBytes, 16, 20);
-
-            // Convert to base64
-            var base64Hash = Convert.ToBase64String(hashBytes);
-
-            // Format hash with extra information
-            return string.Format("$MYHASH$V1${0}${1}", 10000, base64Hash);
+        private static void _Login(tb_users user) {
+            CurrentUser = user;
+            loggedIn = true;
+            SaveUser();
         }
     }
 }
