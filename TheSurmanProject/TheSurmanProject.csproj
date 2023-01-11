@@ -56,7 +56,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppTheme.cs" />
+    <Compile Include="Components\AnswerRadio.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\QuestionSet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\QuestionSet.Designer.cs">
+      <DependentUpon>QuestionSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SurveySum.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SurveySum.Designer.cs">
+      <DependentUpon>SurveySum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ThemeBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ThemeBox.Designer.cs">
+      <DependentUpon>ThemeBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,8 +101,47 @@
     <Compile Include="Pages\MySurveys.Designer.cs">
       <DependentUpon>MySurveys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageCreateSurvey.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\PageCreateSurvey.Designer.cs">
+      <DependentUpon>PageCreateSurvey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageFillSurvey.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\PageFillSurvey.Designer.cs">
+      <DependentUpon>PageFillSurvey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageLogin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\PageLogin.Designer.cs">
+      <DependentUpon>PageLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\PageSettings.Designer.cs">
+      <DependentUpon>PageSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Signup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Signup.Designer.cs">
+      <DependentUpon>Signup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Components\QuestionSet.resx">
+      <DependentUpon>QuestionSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\SurveySum.resx">
+      <DependentUpon>SurveySum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ThemeBox.resx">
+      <DependentUpon>ThemeBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +150,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\MySurveys.resx">
       <DependentUpon>MySurveys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\PageCreateSurvey.resx">
+      <DependentUpon>PageCreateSurvey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\PageFillSurvey.resx">
+      <DependentUpon>PageFillSurvey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\PageSettings.resx">
+      <DependentUpon>PageSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -127,7 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
-      <Project>{273dae4e-8934-4213-a606-a9ebc84d8d3e}</Project>
+      <Project>{84f366b5-b592-4c8c-90b1-634fedc3b123}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj">

@@ -25,14 +25,11 @@ namespace DataAccess
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tb_answers> tb_answers { get; set; }
         public virtual DbSet<tb_groups> tb_groups { get; set; }
         public virtual DbSet<tb_questions> tb_questions { get; set; }
         public virtual DbSet<tb_surveys> tb_surveys { get; set; }
         public virtual DbSet<tb_userAnswers> tb_userAnswers { get; set; }
         public virtual DbSet<tb_users> tb_users { get; set; }
-        public virtual DbSet<vw_useranswer> vw_useranswer { get; set; }
-        public virtual DbSet<vw_userdetails> vw_userdetails { get; set; }
     }
 }

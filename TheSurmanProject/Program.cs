@@ -6,6 +6,12 @@ using System.Windows.Forms;
 
 namespace TheSurmanProject {
     internal static class Program {
+
+        /// <summary>
+        /// Object holding main window, for ease of reaching from sub forms.
+        /// </summary>
+        public static MainWindow mainWindow;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -13,7 +19,8 @@ namespace TheSurmanProject {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+            mainWindow = new MainWindow();
+            Application.Run(mainWindow);
         }
     }
 }

@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.panelContent = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.flowMenuTop = new System.Windows.Forms.FlowLayoutPanel();
@@ -51,10 +52,10 @@
             // panelContent
             // 
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(30, 30);
+            this.panelContent.Location = new System.Drawing.Point(284, 30);
             this.panelContent.Name = "panelContent";
             this.panelContent.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.panelContent.Size = new System.Drawing.Size(1165, 610);
+            this.panelContent.Size = new System.Drawing.Size(911, 610);
             this.panelContent.TabIndex = 2;
             // 
             // panelMenu
@@ -114,6 +115,7 @@
             this.btnCreateSurvey.Text = "Create a Survey";
             this.btnCreateSurvey.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCreateSurvey.UseVisualStyleBackColor = false;
+            this.btnCreateSurvey.Click += new System.EventHandler(this.btnCreateSurvey_Click);
             // 
             // btnBrowseSurveys
             // 
@@ -208,6 +210,7 @@
             this.btnSettings.Text = "Settings";
             this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSettings.UseVisualStyleBackColor = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnLogin
             // 
@@ -229,8 +232,8 @@
             // panelView
             // 
             this.panelView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.panelView.Controls.Add(this.panelMenu);
             this.panelView.Controls.Add(this.panelContent);
+            this.panelView.Controls.Add(this.panelMenu);
             this.panelView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelView.Location = new System.Drawing.Point(0, 20);
             this.panelView.Name = "panelView";
@@ -241,7 +244,7 @@
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.BackgroundImage = global::TheSurmanProject.Properties.Resources.cross;
+            this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnClose.FlatAppearance.BorderSize = 0;
@@ -255,7 +258,7 @@
             // btnMaximize
             // 
             this.btnMaximize.BackColor = System.Drawing.Color.Transparent;
-            this.btnMaximize.BackgroundImage = global::TheSurmanProject.Properties.Resources.square;
+            this.btnMaximize.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMaximize.BackgroundImage")));
             this.btnMaximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMaximize.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnMaximize.Location = new System.Drawing.Point(1185, 0);
@@ -267,7 +270,7 @@
             // 
             // btnMinimize
             // 
-            this.btnMinimize.BackgroundImage = global::TheSurmanProject.Properties.Resources.hyphen;
+            this.btnMinimize.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMinimize.BackgroundImage")));
             this.btnMinimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnMinimize.Location = new System.Drawing.Point(1165, 0);

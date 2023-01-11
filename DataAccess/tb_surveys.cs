@@ -22,7 +22,8 @@ namespace DataAccess
     
         public int surveyId { get; set; }
         public string title { get; set; }
-        public int ownerId { get; set; }
+        public int userId { get; set; }
+        public System.DateTime createdAt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_questions> tb_questions { get; set; }

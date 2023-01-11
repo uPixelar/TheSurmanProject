@@ -26,9 +26,14 @@ namespace ServiceLayer {
 
         /// <returns>Whether current user has admin privileges or not<br />false if not logged in</returns>
         public static bool IsAdmin {
-            get => LoggedIn && CurrentUser.IsAdmin;
+            get => LoggedIn && IsUserAdmin(CurrentUser);
         }
 
+        private static string[] admins = new string[] { "Admin" };
+
+        public static bool IsUserAdmin(tb_users user) {
+           return admins.Contains(user.tb_groups.groupName);
+        }
         /// <summary>
         /// This method loads user data from application settings.<br />
         /// You can reach loaded user data from

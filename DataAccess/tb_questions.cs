@@ -21,8 +21,8 @@ namespace DataAccess
         }
     
         public int questionId { get; set; }
-        public int surveyId { get; set; }
         public string text { get; set; }
+        public int surveyId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_answers> tb_answers { get; set; }

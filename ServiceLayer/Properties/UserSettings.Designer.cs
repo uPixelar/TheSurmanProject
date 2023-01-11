@@ -46,5 +46,17 @@ namespace ServiceLayer.Properties {
                 this["password"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int themeId {
+            get {
+                return ((int)(this["themeId"]));
+            }
+            set {
+                this["themeId"] = value;
+            }
+        }
     }
 }

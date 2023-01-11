@@ -1,4 +1,5 @@
 ﻿//This file holds complicated, mostly stolen codes, we do not work much in this file
+//Removes title bar, handles resizing without title bar.
 
 using System;
 using System.Drawing;
@@ -7,6 +8,10 @@ using System.Windows.Forms;
 
 namespace TheSurmanProject {
     partial class MainWindow {
+        private void MainWindow_Resize(object sender, EventArgs e) {
+            AdjustForm();
+        }
+
         private int borderSize = 2;
 
         //Drag Form
